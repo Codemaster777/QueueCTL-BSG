@@ -12,7 +12,7 @@ The system is designed to be resilient, observable, and highly controllable, fea
     -   **Automatic Retry with Exponential Backoff**: Failed jobs are automatically retried with a configurable delay.
     -   **Dead Letter Queue (DLQ)**: Jobs that exhaust all retries are moved to a DLQ for manual inspection.
 
--   **Bonus Features Implemented **
+-   **Bonus Features Implemented**
     -   **Job Priority Queues**: Assign a priority to jobs; workers will always process higher-priority jobs first.
     -   **Scheduled/Delayed Jobs (`run_at`)**: Schedule jobs to run at a specific time in the future.
     -   **Job Timeout Handling**: Automatically fail jobs that run longer than their specified timeout.
@@ -42,8 +42,8 @@ The system is designed with a clear separation of concerns, making it robust and
 
 1.  **Clone the Repository**
     ```bash
-    git clone <YOUR_REPOSITORY_LINK>
-    cd queuectl
+    git clone https://github.com/Codemaster777/QueueCTL-BSG
+    cd QueueCTL-BSG
     ```
 
 2.  **Create and Activate a Virtual Environment**
@@ -74,10 +74,26 @@ The system is designed with a clear separation of concerns, making it robust and
 
 ## Usage Examples
 
-#### 1. Enqueue an Advanced Job
+### 1. Check System Status
+To check the status of the system:
+```powershell
+queuectl status
+```
+
+#### 2. Enqueue Job
 The job data is a JSON string. On Windows, this must be wrapped in double quotes with inner quotes escaped.
 
 ```powershell
+# Enqueue two jobs.
+
+# The first one is a simple echo command that will succeed. 
+queuectl enqueue "{\"id\":\"job-success\",\"command\":\"echo This job was a success!\"}"
+
+# The second is a command that doesn't exist, which will fail.
+queuectl enqueue "{\"id\":\"job-fail\",\"command\":\"badcommand\"}"
+
+# Additional Advanced Jobs Examples:
+
 # Enqueue a high-priority job with a 60-second timeout
 queuectl enqueue "{\"id\":\"important_job\",\"command\":\"python process_report.py\",\"priority\":1,\"timeout\":60}"
 
@@ -85,18 +101,18 @@ queuectl enqueue "{\"id\":\"important_job\",\"command\":\"python process_report.
 queuectl enqueue "{\"id\":\"scheduled_job\",\"command\":\"echo Task done\",\"run_at\":\"2025-11-08T14:00:00Z\"}"
 ```
 
-#### 2. Start Workers
+#### 3. Start Workers
 ```powershell
-queuectl worker start --count 4
+queuectl worker start --count 2
 ```
 
-#### 3. Monitor with the Dashboard
+#### 4. Monitor with the Dashboard
 ```powershell
 queuectl dashboard
 ```
 Now, open your web browser to `http://127.0.0.1:5000`. The page will auto-refresh every 5 seconds.
 
-#### 4. Check Logs and Metrics
+#### 5. Check Logs and Metrics
 
 ```powershell
 # View the full output of a specific job
@@ -122,3 +138,4 @@ Observe the output to see the different job types being processed according to t
 
 ## Demo:
 https://drive.google.com/file/d/1gx5xLVNQYXDw2ZKMlmBkPWq8JS5qTklG/view?usp=sharing
+

@@ -74,7 +74,7 @@ The system is designed with a clear separation of concerns, making it robust and
 
 ## Usage Examples
 
-### 1. Check System Status
+#### 1. Check System Status
 To check the status of the system:
 ```powershell
 queuectl status
@@ -138,5 +138,6 @@ Observe the output to see the different job types being processed according to t
 
 ## Demo:
 https://drive.google.com/file/d/1gx5xLVNQYXDw2ZKMlmBkPWq8JS5qTklG/view?usp=sharing
+
 
 

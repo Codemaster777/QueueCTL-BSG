@@ -116,7 +116,7 @@ Now, open your web browser to `http://127.0.0.1:5000`. The page will auto-refres
 
 ```powershell
 # View the full output of a specific job
-queuectl logs important_job
+queuectl logs job-success
 
 # Get a performance overview of the system
 queuectl metrics
@@ -138,4 +138,5 @@ Observe the output to see the different job types being processed according to t
 
 ## Demo:
 https://drive.google.com/file/d/1gx5xLVNQYXDw2ZKMlmBkPWq8JS5qTklG/view?usp=sharing
+
 
